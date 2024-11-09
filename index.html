@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bus Tracker-BUS_02</title>
+    <script>
+        function startTracking() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(sendLocation, handleError, {
+                    enableHighAccuracy: true,
+                    maximumAge: 0,
+                    timeout: 10000
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        async function sendLocation(position) {
+            const { latitude, longitude, accuracy } = position.coords;
+            console.log(`lat : ${latitude}`)
+            console.log(`lon : ${longitude}`)
+            console.log(`acc : ${accuracy}`)
+            await fetch('https://74b8-61-245-171-38.ngrok-free.app/api/update-location', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    busId: 'BUS_02',
+                    latitude,
+                    longitude,
+                    accuracy
+                })
+            });
+        }
+
+        function handleError(error) {
+            console.error('Error obtaining location:', error);
+        }
+    </script>
+</head>
+<body onload="startTracking()">
+    <h2>Tracking Bus Location in Background</h2>
+</body>
+</html>
