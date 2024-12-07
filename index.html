@@ -20,13 +20,13 @@
             console.log(`lat : ${latitude}`)
             console.log(`lon : ${longitude}`)
             console.log(`acc : ${accuracy}`)
-            await fetch('https://74b8-61-245-171-38.ngrok-free.app/api/update-location', {
-                method: 'POST',
+            await fetch('https://74b8-61-245-171-38.ngrok-free.app/api-location/update-location', {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    busId: 'BUS_02',
+                    busId: 'nd-4444',
                     latitude,
                     longitude,
                     accuracy
