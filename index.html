@@ -20,7 +20,7 @@
             console.log(`lat : ${latitude}`)
             console.log(`lon : ${longitude}`)
             console.log(`acc : ${accuracy}`)
-            await fetch('http://localhost:8080/api-location/update-location', {
+            await fetch('https://f903-192-248-57-153.ngrok-free.app/api-bus/update-location', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
